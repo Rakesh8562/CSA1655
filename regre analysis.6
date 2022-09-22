@@ -1,0 +1,318 @@
+
+R version 4.2.1 (2022-06-23 ucrt) -- "Funny-Looking Kid"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> # Generate random IQ values with mean = 30 and sd =2
+> IQ <- rnorm(40, 30, 2)
+>  
+> # Sorting IQ level in ascending order
+> IQ <- sort(IQ)
+>  
+> # Generate vector with pass and fail values of 40 students
+> result <- c(0, 0, 0, 1, 0, 0, 0, 0, 0, 1,
++ 1, 0, 0, 0, 1, 1, 0, 0, 1, 0,
++ 0, 0, 1, 0, 0, 1, 1, 0, 1, 1,
++ 1, 1, 1, 0, 1, 1, 1, 1, 0, 1)
+>  
+> # Data Frame
+> df <- as.data.frame(cbind(IQ, result))
+>  
+> # Print data frame
+> print(df)
+         IQ result
+1  26.11859      0
+2  26.38344      0
+3  26.40114      0
+4  26.66394      1
+5  27.08623      0
+6  27.27639      0
+7  27.53819      0
+8  27.57609      0
+9  28.44735      0
+10 28.50985      1
+11 28.57723      1
+12 28.85575      0
+13 28.87989      0
+14 29.11076      0
+15 29.37700      1
+16 29.38093      1
+17 29.44189      0
+18 29.68743      0
+19 29.79790      1
+20 30.26250      0
+21 30.44723      0
+22 30.57876      0
+23 30.62537      1
+24 30.70203      0
+25 30.70969      0
+26 30.74225      1
+27 30.88495      1
+28 30.95799      0
+29 31.39601      1
+30 31.40723      1
+31 31.78378      1
+32 31.85965      1
+33 31.93283      1
+34 31.95271      0
+35 31.98220      1
+36 32.04935      1
+37 33.49103      1
+38 33.79628      1
+39 34.07694      0
+40 34.59791      1
+>  
+> # output to be present as PNG file
+> png(file="LogisticRegressionGFG.png")
+>  
+> # Plotting IQ on x-axis and result on y-axis
+> plot(IQ, result, xlab = "IQ Level",
++ ylab = "Probability of Passing")
+>  
+> # Create a logistic model
+> g = glm(result~IQ, family=binomial, df)
+>  
+> # Create a curve based on prediction using the regression model
+> curve(predict(g, data.frame(IQ=x), type="resp"), add=TRUE)
+>  
+> # This Draws a set of points
+> # Based on fit to the regression model
+> points(IQ, fitted(g), pch=30)
+There were 40 warnings (use warnings() to see them)
+>  
+> # Summary of the regression model
+> summary(g)
+
+Call:
+glm(formula = result ~ IQ, family = binomial, data = df)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.9570  -0.9694  -0.5337   0.9680   1.9267  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)  
+(Intercept) -14.0651     5.6998  -2.468   0.0136 *
+IQ            0.4643     0.1889   2.458   0.0140 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 55.352  on 39  degrees of freedom
+Residual deviance: 47.604  on 38  degrees of freedom
+AIC: 51.604
+
+Number of Fisher Scoring iterations: 3
+
+>  
+> # saving the file
+> dev.off()# Generate random IQ values with mean = 30 and sd =2
+null device 
+          1 
+> IQ <- rnorm(40, 30, 2)
+>  
+> # Sorting IQ level in ascending order
+> IQ <- sort(IQ)
+>  
+> # Generate vector with pass and fail values of 40 students
+> result <- c(0, 0, 0, 1, 0, 0, 0, 0, 0, 1,
++ 1, 0, 0, 0, 1, 1, 0, 0, 1, 0,
++ 0, 0, 1, 0, 0, 1, 1, 0, 1, 1,
++ 1, 1, 1, 0, 1, 1, 1, 1, 0, 1)
+>  
+> # Data Frame
+> df <- as.data.frame(cbind(IQ, result))
+>  
+> # Print data frame
+> print(df)
+         IQ result
+1  27.64972      0
+2  27.69059      0
+3  28.08087      0
+4  28.22336      1
+5  28.27653      0
+6  28.35556      0
+7  28.38094      0
+8  28.44308      0
+9  28.46794      0
+10 28.58083      1
+11 28.78442      1
+12 28.82193      0
+13 28.83242      0
+14 28.84889      0
+15 28.87035      1
+16 29.20266      1
+17 29.22214      0
+18 29.24577      0
+19 29.39218      1
+20 29.39865      0
+21 29.41551      0
+22 29.48236      0
+23 29.65577      1
+24 29.66095      0
+25 29.75939      0
+26 29.79642      1
+27 29.80622      1
+28 29.84060      0
+29 29.91634      1
+30 30.05067      1
+31 30.13785      1
+32 30.41102      1
+33 30.61791      1
+34 30.65554      0
+35 30.90630      1
+36 31.53429      1
+37 31.68852      1
+38 31.72406      1
+39 32.56900      0
+40 33.96303      1
+>  
+> # output to be present as PNG file
+> png(file="LogisticRegressionGFG.png")
+>  
+> # Plotting IQ on x-axis and result on y-axis
+> plot(IQ, result, xlab = "IQ Level",
++ ylab = "Probability of Passing")
+>  
+> # Create a logistic model
+> g = glm(result~IQ, family=binomial, df)
+>  
+> # Create a curve based on prediction using the regression model
+> curve(predict(g, data.frame(IQ=x), type="resp"), add=TRUE)
+>  
+> # This Draws a set of points
+> # Based on fit to the regression model
+> points(IQ, fitted(g), pch=30)
+There were 40 warnings (use warnings() to see them)
+>  
+> # Summary of the regression model
+> summary(g)
+
+Call:
+glm(formula = result ~ IQ, family = binomial, data = df)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.1921  -0.9403  -0.6050   1.0654   1.6942  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)  
+(Intercept) -23.7074    10.2223  -2.319   0.0204 *
+IQ            0.7988     0.3466   2.304   0.0212 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 55.352  on 39  degrees of freedom
+Residual deviance: 47.888  on 38  degrees of freedom
+AIC: 51.888
+
+Number of Fisher Scoring iterations: 4
+
+>  
+> # saving the file
+> dev.off()
+null device 
+          1 
+> IQ <- rnorm(40, 30, 2)
+> IQ <- sort(IQ)
+> result <- c(0, 0, 0, 1, 0, 0, 0, 0, 0, 1,
++ 1, 0, 0, 0, 1, 1, 0, 0, 1, 0,
++ 0, 0, 1, 0, 0, 1, 1, 0, 1, 1,
++ 1, 1, 1, 0, 1, 1, 1, 1, 0, 1)
+> df <- as.data.frame(cbind(IQ, result))
+> print(df)
+         IQ result
+1  25.96406      0
+2  26.51044      0
+3  26.89237      0
+4  27.36851      1
+5  27.38726      0
+6  27.63035      0
+7  28.07292      0
+8  28.47119      0
+9  28.91371      0
+10 28.97132      1
+11 29.27660      1
+12 29.28751      0
+13 29.59642      0
+14 29.63275      0
+15 29.67370      1
+16 29.68422      1
+17 29.73169      0
+18 30.01724      0
+19 30.14445      1
+20 30.24148      0
+21 30.24466      0
+22 30.31451      0
+23 30.32787      1
+24 30.46460      0
+25 30.51859      0
+26 30.62763      1
+27 30.65719      1
+28 31.05111      0
+29 31.07783      1
+30 31.09209      1
+31 31.32687      1
+32 31.66757      1
+33 31.72447      1
+34 31.79013      0
+35 31.84822      1
+36 32.12389      1
+37 32.43841      1
+38 32.96136      1
+39 33.55645      0
+40 33.66773      1
+> png(file="LogisticRegressionGFG.png") 
+> plot(IQ, result, xlab = "IQ Level",
++ ylab = "Probability of Passing")
+> g = glm(result~IQ, family=binomial, df)
+> curve(predict(g, data.frame(IQ=x), type="resp"), add=TRUE) 
+> points(IQ, fitted(g), pch=30)
+There were 40 warnings (use warnings() to see them)
+> summary(g)
+
+Call:
+glm(formula = result ~ IQ, family = binomial, data = df)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.9934  -1.0226  -0.4343   0.9982   1.9223  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)  
+(Intercept) -17.2243     7.1126  -2.422   0.0154 *
+IQ            0.5681     0.2351   2.416   0.0157 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 55.352  on 39  degrees of freedom
+Residual deviance: 47.544  on 38  degrees of freedom
+AIC: 51.544
+
+Number of Fisher Scoring iterations: 3
+
+> dev.off()
+null device 
+          1 
+> 
